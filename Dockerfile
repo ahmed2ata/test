@@ -1,7 +1,9 @@
-FROM node
-ENV MONGO_DB_USERNAME=admin \
-    MONGO_DB_PASSWORD=password 
-RUN mkdir -p /home/app
+#docker file from samy
 
-COPY . /home/app
-CMD ["node", 'server.js']
+FROM python:latest
+WORKDIR /app
+COPY requrmints.text .
+RUN pip install -r requrmints.text
+COPY hello.py .
+EXPOSE 5000
+CMD python hello.py
